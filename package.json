@@ -1,0 +1,22 @@
+{
+  "name": "hangman-constructor",
+  "version": "1.0.0",
+  "description": "let user play hangman through command-line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farid64/hangman-constructor.git"
+  },
+  "author": "Farid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farid64/hangman-constructor/issues"
+  },
+  "homepage": "https://github.com/farid64/hangman-constructor#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}
