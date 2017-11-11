@@ -1,9 +1,12 @@
 var Word = require("./wordConstructor.js");
 var words = require("./words.js");
+var Randomizer = require("./randomizer.js");
 var inquirer = require("inquirer");
 
 
-var thisWord = new Word("country");
+console.log(words);
+var rndWord = new Randomizer(words);
+var thisWord = new Word(rndWord.giveWord());
 var guesses = 5
 
 function inquirerFn(){
@@ -21,18 +24,28 @@ function inquirerFn(){
 
 			]).then( function(response){
 
-				thisWord.letterCheck(response.letter);
+				
 
-				if(thisWord.)
-				guesses --;
+				var event = thisWord.letterCheck(response.letter);
 
-				if(guesses>0){
+				console.log(thisWord.print());
 
-				inquirerFn();
+				if(event === false){
+					guesses --;
+					console.log("Wrong guess: \n you have " + guesses + " left.")
+				}
+
+				if(thisWord.isDone()){
+
+					playAgain();
+
+				}else if(guesses>0){
+
+					inquirerFn();
 
 				}else{
 
-					console.log("finished");
+					playAgain();
 
 				}
 		});
@@ -44,12 +57,34 @@ function inquirerFn(){
 
 inquirerFn();
 
+function playAgain(){
+
+	console.log("The Game is Over" + "\n");
+
+	inquirer.
+		prompt([
+		{
+			type: "confirm",
+			message: "Do you want to play again?",
+			name: "confirm",
+			default: true
+		}
+
+		]).then( function(response){
+			if(response.confirm){
+
+				if(!rndWord.isMore()){
+					rndWord = new Randomizer(words);
+				}
+
+				thisWord = new Word(rndWord.giveWord());
+				guesses = 5;
+
+				inquirerFn();
+			}
+		});
+}
 
 
 
-
-
-// var letter = process.argv[2];
-
-// thisWord.letterCheck(letter);
 

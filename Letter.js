@@ -1,3 +1,5 @@
+
+
 var Letter = function(lt, index){
 	this.letter = lt;
 	this.index = index;
